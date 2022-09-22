@@ -1,7 +1,8 @@
 const express = require("express");
-const app = express();
+
 const fs = require("fs");
 var cors = require('cors');
+const app = express();
 
 // const router = require("./routers/user.router");
 const routerUser = require("./routers/user.router");
@@ -29,8 +30,7 @@ app.listen(port, () => {
 })
 
 
-// export user jon file
-module.exports.users = JSON.parse(fs.readFileSync(__dirname + "/user.json"));
+
 
 process.on("unhandledRejection", (error) => {
     console.log(error.name, error.message);
@@ -38,3 +38,6 @@ process.on("unhandledRejection", (error) => {
         process.exit(1);
     });
 });
+
+//export user jon file
+module.exports.users = JSON.parse(fs.readFileSync(__dirname + "/user.json"));
