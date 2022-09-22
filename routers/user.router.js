@@ -8,6 +8,7 @@ const randomUserController = require("../controllers/randomUser.controller")
 router.route('/user/random').get(randomUserController.getRandomUser);
 router.route('/user/all').get(userController.getAllUser);
 router.route('/user/save').post(userController.saveUser);
+router.route('/user/delete/:id').delete(userController.deleteUser);
 
 
 module.exports = router;
