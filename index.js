@@ -10,7 +10,9 @@ const port = 5000 || process.env.PORT;
 app.use("/", routerUser);
 
 
-user = JSON.parse(fs.readFileSync(__dirname + "/user.json"));
+const user = JSON.parse(fs.readFileSync(__dirname + "/user.json"));
+
+
 
 
 
