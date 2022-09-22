@@ -1,7 +1,7 @@
 const users = require("./../index")
 
 const ranNum = () => {
-    return Math.floor(0 + Math.random() * 100) || 0;
+    return Math.floor(0 + Math.random() * users.users.length || 100) || 0;
 };
 
 module.exports.getRandomUser = (req, res) => {
