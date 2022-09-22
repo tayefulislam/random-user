@@ -66,3 +66,85 @@ module.exports.deleteUser = (req, res) => {
 
 }
 
+
+// update 
+
+module.exports.updateUser = (req, res) => {
+    const updateUser = req.body;
+    console.log(Number(updateUser.id));
+
+
+    const data = JSON?.parse(fs.readFileSync('user.json'));
+    const newArr = [...data]
+    const checkAvility = newArr?.findIndex(user => user.id === updateUser?.id);
+
+
+    if (checkAvility === -1) {
+        res.send("id not match with any user id");
+    }
+    else if (updateUser > newArr.length) {
+        res.send("error")
+    }
+    else {
+
+
+        newArr[checkAvility] = updateUser;
+        const stringData = JSON.stringify(newArr);
+
+        fs.writeFile('user.json', stringData, (err) => {
+            if (err) {
+                res.write("UPDATE FAIL");
+                res.end();
+            } else {
+                res.write("Update succesful");
+                res.end();
+            };
+        });
+
+    };
+
+
+}
+
+
+
+// nluk update
+
+
+module.exports.blukUsersUpdate = (req, res) => {
+
+    const updateUser = req.body;
+    console.log(updateUser);
+
+    const data = JSON?.parse(fs.readFileSync('user.json'));
+    let newArr = [...data];
+
+    newArr.map(user => {
+        for (const upUser of updateUser) {
+
+            if (user.id === upUser.id) {
+                const checkAvility = newArr?.findIndex(user => user.id === upUser?.id);
+                newArr[checkAvility] = upUser;
+            }
+
+        }
+
+    })
+
+    const stringArray = JSON.stringify(newArr);
+
+    fs.writeFile('user.json', stringArray, (err) => {
+
+        if (err) {
+            res.write("Error");
+            res.end();
+        } else {
+            res.write("Succfuly update");
+            res.end();
+        }
+
+    });
+
+
+
+}
