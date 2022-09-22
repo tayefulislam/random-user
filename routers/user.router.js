@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+router.use(express.json())
 const userController = require("../controllers/user.controller");
 const randomUserController = require("../controllers/randomUser.controller")
 
