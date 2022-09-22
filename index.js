@@ -39,5 +39,3 @@ process.on("unhandledRejection", (error) => {
     });
 });
 
-//export user jon file
-module.exports.users = JSON.parse(fs.readFileSync(__dirname + "/user.json"));
